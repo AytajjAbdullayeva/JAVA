@@ -1,0 +1,14 @@
+Student
+
++ fullName: String
++studentID: int
++ age: int
++ GPA: double
++ enrollmentYear: int
+
+
++ Student(name: String, id: int, studentAge: int, studentGPA: double, year: int)
++ EnrolledYear(currentYear: int): int
++ updateGPA(newGPA: double): void
++ displayStudentInfo(): String
++ main(args: String[]): void
