@@ -5,36 +5,35 @@ public class Student {
     private double GPA;
     private int enrollmentYear;
 
-    public Student(String name, int id, int studentAge, double studentGPA, int year) {
-        fullName = name;
-        studentID = id;
-        age = studentAge;
-        GPA = studentGPA;
-        enrollmentYear = year;
+    public Student(String fullName, int studentID, int age, double GPA, int enrollmentYear) {
+        this.fullName = fullName;
+        this.studentID = studentID;
+        this.age = age;
+        this.GPA = GPA;
+        this.enrollmentYear = enrollmentYear;
     }
 
-    public int EnrolledYear(int currentYear) {
-        return currentYear - enrollmentYear;
+    public int enrolledYear(int currentYear) {
+        return currentYear - this.enrollmentYear;
     }
 
     public void updateGPA(double newGPA) {
-        GPA = newGPA;
-        System.out.println("GPA updated to: " + GPA);
+        this.GPA = newGPA;
+        System.out.println("GPA updated to: " + this.GPA);
     }
 
-
     public String displayStudentInfo() {
-        return "Student Name: " + fullName + "\n" +
-                "Student ID: " + studentID + "\n" +
-                "Age: " + age + "\n" +
-                "GPA: " + GPA + "\n" +
-                "Enrollment Year: " + enrollmentYear;
+        return "Student Name: " + this.fullName + "\n" +
+                "Student ID: " + this.studentID + "\n" +
+                "Age: " + this.age + "\n" +
+                "GPA: " + this.GPA + "\n" +
+                "Enrollment Year: " + this.enrollmentYear;
     }
 
     public static void main(String[] args) {
         Student student = new Student("Aslanova Aynur", 12345, 19, 3.8, 2023);
         System.out.println(student.displayStudentInfo());
-        System.out.println("Student enrolled: " + student.EnrolledYear(2025));
+        System.out.println("Student enrolled: " + student.enrolledYear(2025));
         student.updateGPA(3.9);
     }
 }
