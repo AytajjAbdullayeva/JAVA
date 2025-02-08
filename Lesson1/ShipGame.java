@@ -6,7 +6,7 @@ public class ShipGame {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        // Create a 5x5 grid initialized with '-'
+      
         char[][] grid = new char[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -36,7 +36,7 @@ public class ShipGame {
                 }
             }
 
-            // Get valid column input from the player
+            
             while (true) {
                 System.out.print("Enter the column (1-5): ");
                 String input = scanner.nextLine();
@@ -49,7 +49,7 @@ public class ShipGame {
                 }
             }
 
-            // Check if the shot hits the target
+         
             if (row == targetRow && col == targetCol) {
                 grid[row][col] = 'x';
                 displayGrid(grid);
@@ -67,7 +67,6 @@ public class ShipGame {
         scanner.close();
     }
 
-    // Method to display the grid
     public static void displayGrid(char[][] grid) {
         System.out.println("  0 | 1 | 2 | 3 | 4 | 5 |");
         for (int i = 0; i < grid.length; i++) {
