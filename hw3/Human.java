@@ -17,6 +17,13 @@ class Human {
         this.schedule = new DayOfWeek[7][];
     }
 
+    public Human(String name, String surname, int year) {
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.schedule = new DayOfWeek[7][];
+    }
+
     public Human(String name, String surname, int year, int iq, Human mother, Human father) {
         this(name, surname, year, iq);
         this.mother = mother;
@@ -80,4 +87,7 @@ class Human {
         return "Human{name='" + name + "', surname='" + surname +
                 "', year=" + year + ", iq=" + iq + "}";
     }
+
+
+
 }
