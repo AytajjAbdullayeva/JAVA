@@ -23,30 +23,61 @@ class Human {
         this.father = father;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getIq() {
+        return iq;
+    }
+
+    public Family getFamily() {
+        return family;
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
     public void greetPet() {
-        System.out.println("Hello, " + pet);
+        if (pet != null) {
+            System.out.println("Hello, " + pet);
+        } else {
+            System.out.println("I don't have a pet.");
+        }
     }
 
     public void describePet() {
-        System.out.println("I have a " + pet.getClass().getSimpleName() + " named " + pet.toString());
+        if (pet != null) {
+            System.out.println("I have a " + pet.getClass().getSimpleName() + " named " + pet.toString());
+        } else {
+            System.out.println("I don't have a pet to describe.");
+        }
     }
 
     public void feedPet(boolean isTimeToFeed) {
-        if (isTimeToFeed) {
-            System.out.println("Hm... I will feed " + pet);
+        if (pet != null) {
+            if (isTimeToFeed) {
+                System.out.println("Hm... I will feed " + pet);
+            } else {
+                System.out.println("I think " + pet + " is not hungry.");
+            }
         } else {
-            System.out.println("I think " + pet + " is not hungry.");
+            System.out.println("I don't have a pet to feed.");
         }
     }
 
     @Override
     public String toString() {
-        return "Human{name='" + name + "', surname='" + surname + "', year=" + year + ", iq=" + iq + "}";
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Human object is being deleted: " + this);
-        super.finalize();
+        return "Human{name='" + name + "', surname='" + surname +
+                "', year=" + year + ", iq=" + iq + "}";
     }
 }
