@@ -1,38 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+public class Main {
+    public static void main(String[] args) {
 
-public class Family implements AutoCloseable {
-    private Human mother;
-    private Human father;
-    private List<Human> children = new ArrayList<>();
+        Pet pet1 = new Pet("Rock", Species.DOG);
+        Human mother = new Human("Jane", "Karleone", 1977, 90);
+        Human father = new Human("Vito", "Karleone", 1975, 85);
+        Family family = new Family(mother, father);
+        family.addChild(new Human("Michael", "Karleone", 1995, 110));
 
-    public Family(Human mother, Human father) {
-        this.mother = mother;
-        this.father = father;
-    }
+        System.out.println(family);
+        family.countFamily();
 
-    public void addChild(Human child) {
-        children.add(child);
-    }
 
-    public boolean deleteChild(Human child) {
-        return children.remove(child);
-    }
-
-    public boolean deleteChild(int index) {
-        if (index >= 0 && index < children.size()) {
-            children.remove(index);
-            return true;
+        for (int i = 10_000; i < 10_000_000; i++) {
+            new Human("name" + i, "surname" + i, 2000 + i);
         }
-        return false;
-    }
 
-    public int countFamily() {
-        return 2 + children.size(); // Parents + children
-    }
+        System.gc();
 
-    @Override
-    public void close() {
-        System.out.println("Family object is being deleted.");
+       
+        pet1 = null;
+        System.gc();
     }
 }
