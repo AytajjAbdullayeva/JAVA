@@ -1,38 +1,66 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-public class Family implements AutoCloseable {
+class Family {
     private Human mother;
     private Human father;
-    private List<Human> children = new ArrayList<>();
+    private Human[] children;
+    private Pet pet;
 
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
+        this.children = new Human[0];
     }
 
     public void addChild(Human child) {
-        children.add(child);
+        Human[] newChildren = Arrays.copyOf(children, children.length + 1);
+        newChildren[children.length] = child;
+        this.children = newChildren;
+        child.setFamily(this);  // Use setter instead of direct access
     }
 
     public boolean deleteChild(Human child) {
-        return children.remove(child);
-    }
-
-    public boolean deleteChild(int index) {
-        if (index >= 0 && index < children.size()) {
-            children.remove(index);
-            return true;
+        for (int i = 0; i < children.length; i++) {
+            if (children[i].equals(child)) {
+                Human[] newChildren = new Human[children.length - 1];
+                System.arraycopy(children, 0, newChildren, 0, i);
+                System.arraycopy(children, i + 1, newChildren, i, children.length - i - 1);
+                this.children = newChildren;
+                child.setFamily(null);
+                return true;
+            }
         }
         return false;
     }
 
     public int countFamily() {
-        return 2 + children.size(); // Parents + children
+        return children.length + 2; // Including mother and father
+    }
+
+    public Human getMother() {
+        return mother;
+    }
+
+    public Human getFather() {
+        return father;
+    }
+
+    public Human[] getChildren() {
+        return children;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
+    public Pet getPet() {
+        return pet;
     }
 
     @Override
-    public void close() {
-        System.out.println("Family object is being deleted.");
+    public String toString() {
+        return "Family{mother=" + mother + ", father=" + father +
+                ", children=" + Arrays.toString(children) +
+                ", pet=" + pet + "}";
     }
 }
