@@ -34,7 +34,7 @@ class Family {
     }
 
     public int countFamily() {
-        return children.length + 2; // Including mother and father
+        return children.length + 2;
     }
 
     public Human getMother() {
