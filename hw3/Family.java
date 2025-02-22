@@ -16,7 +16,7 @@ class Family {
         Human[] newChildren = Arrays.copyOf(children, children.length + 1);
         newChildren[children.length] = child;
         this.children = newChildren;
-        child.setFamily(this);  // Use setter instead of direct access
+        child.setFamily(this);  
     }
 
     public boolean deleteChild(Human child) {
