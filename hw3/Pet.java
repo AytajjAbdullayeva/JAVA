@@ -1,35 +1,44 @@
-import java.util.Objects;
-
-public class Pet {
-    private Species species;
+class Pet {
     private String nickname;
     private int age;
     private int trickLevel;
+    private String[] habits;
+    private Species species;
 
-    public Pet(Species species, String nickname, int age, int trickLevel) {
+    public Pet(String nickname, Species species) {
+        this.nickname = nickname;
         this.species = species;
+        this.habits = new String[]{};
+    }
+
+    public Pet(String nickname, int age, int trickLevel, Species species, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
+        this.species = species;
+        this.habits = habits;
+    }
+
+    public void eat() {
+        System.out.println("I am eating");
+    }
+
+    public void respond() {
+        System.out.println("Hello, owner. I am " + nickname + ". I miss you!");
+    }
+
+    public void foul() {
+        System.out.println("I need to cover it up");
     }
 
     @Override
     public String toString() {
-        return String.format("Pet{species=%s, nickname='%s', age=%d, trickLevel=%d}",
-                species, nickname, age, trickLevel);
+        return species + " {nickname='" + nickname + "', age=" + age + ", trickLevel=" + trickLevel + ", habits=" + java.util.Arrays.toString(habits) + "}";
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Pet)) return false;
-        Pet pet = (Pet) obj;
-        return age == pet.age && trickLevel == pet.trickLevel &&
-                species == pet.species && Objects.equals(nickname, pet.nickname);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(species, nickname, age, trickLevel);
+    protected void finalize() throws Throwable {
+        System.out.println("Pet object is being deleted: " + this);
+        super.finalize();
     }
 }
