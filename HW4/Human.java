@@ -23,6 +23,14 @@ public class Human {
         this.surname = surname;
         this.year = year;
     }
+    public int getIq() {
+    return iq;
+}
+
+public String getSurname() {
+    return surname;
+}
+
 
     public Human() {}
 
